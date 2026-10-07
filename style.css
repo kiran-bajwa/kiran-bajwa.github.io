@@ -1,1 +1,17 @@
+:root {
+  --peach: #FAECE7;
+  --violet: #3C3489;
+  --pink: #D4537E;
+  --tangerine: #D85A30;
+  --gold: #FAC775;
+  --pine: #0F6E56;
+  --mint-wash: #E1F5EE;
+  --ink: #4A1B0C;
+  --card: #FFFFFF;
+}
 
+body {
+  background: var(--peach);
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+}
