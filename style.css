@@ -666,6 +666,7 @@ body {
 body.chaos .status {
   background: #FBEAF0;
   color: var(--pink);
+  overflow: hidden;
 }
 
 .fix-button {

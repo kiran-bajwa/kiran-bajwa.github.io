@@ -78,7 +78,10 @@ button.addEventListener('click', () => {
 // On page load: start already in a pile, then fix itself after 4 seconds
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduceMotion) {
+  history.scrollRestoration = 'manual'; // don't jump back to where you were last time
+  window.scrollTo(0, 0);                // always start the chaos at the top
   pieces.forEach(piece => piece.style.transition = 'none');
+  
   makeChaos();
   document.body.offsetHeight; // makes the browser apply the pile instantly
   pieces.forEach(piece => piece.style.transition = '');
