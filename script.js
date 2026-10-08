@@ -117,3 +117,72 @@ themeToggle.addEventListener('click', () => {
 try {
   if (localStorage.getItem('night') === 'yes') setNight(true);
 } catch (e) {}
+
+
+// ===== Ticket panel =====
+const panel = document.querySelector('#ticket-panel');
+const backdrop = document.querySelector('#panel-backdrop');
+const panelBody = document.querySelector('#panel-body');
+const panelId = document.querySelector('#panel-id');
+const boardTip = document.querySelector('.board-tip');
+
+function openTicket(ticket) {
+  // Read everything we need from the ticket that was clicked
+  const id = ticket.querySelector('.ticket-id').textContent;
+  const title = ticket.querySelector('.ticket-title').textContent;
+  const project = ticket.querySelector('.ticket-project').textContent;
+  const status = ticket.closest('.column').querySelector('.column-head span').textContent;
+  const details = ticket.querySelector('.ticket-details').innerHTML;
+  const accent = ticket.style.getPropertyValue('--accent');
+
+  // Fill the panel with it
+  panelId.textContent = id;
+  panel.style.setProperty('--accent', accent);
+  panelBody.innerHTML = `
+    <span class="panel-status">${status}</span>
+    <h3 class="panel-title">${title}</h3>
+    <p class="ticket-project">${project}</p>
+    ${details}
+  `;
+
+  // Slide it in
+  panel.classList.add('open');
+  backdrop.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+
+  // Check off the subtasks one by one
+  panelBody.querySelectorAll('.subtasks li').forEach((item, i) => {
+    setTimeout(() => item.classList.add('done'), 400 + i * 250);
+  });
+
+  // After the first open, the hint and the pulse aren't needed anymore
+  boardTip.classList.add('gone');
+  const pulsing = document.querySelector('.ticket.pulse');
+  if (pulsing) pulsing.classList.remove('pulse');
+}
+
+function closeTicket() {
+  panel.classList.remove('open');
+  backdrop.classList.remove('open');
+  panel.setAttribute('aria-hidden', 'true');
+}
+
+// Every ticket except "Your team?" opens on click, or Enter for keyboard users
+document.querySelectorAll('.ticket:not(.ticket-next)').forEach(ticket => {
+  ticket.setAttribute('tabindex', '0');
+  ticket.setAttribute('role', 'button');
+  ticket.addEventListener('click', () => openTicket(ticket));
+  ticket.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openTicket(ticket);
+    }
+  });
+});
+
+// Three ways to close: the X, clicking outside, or pressing Escape
+document.querySelector('#panel-close').addEventListener('click', closeTicket);
+backdrop.addEventListener('click', closeTicket);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeTicket();
+});
