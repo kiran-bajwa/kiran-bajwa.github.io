@@ -53,7 +53,7 @@
     <div class="board">
 
       <!-- ===== Column 1: In progress ===== -->
-      <div class="column"> id="col-progress">
+      <<div class="column" id="col-progress">
         <div class="column-head"><span>in progress</span><span class="count" id="count-progress">2</span></div>
 
         <article class="ticket pulse" style="--accent: #0F6E56;">
@@ -203,8 +203,8 @@
         </article>
       </div>
 
-      <!-- ===== Column 3: Up next ===== -->
-            <div class="column">
+            <!-- ===== Column 3: Up next ===== -->
+      <div class="column">
         <div class="column-head"><span>up next</span><span class="count" id="count-next">1</span></div>
 
         <article class="ticket ticket-next" id="next-ticket" style="--accent: #D85A30;">
@@ -217,7 +217,9 @@
           <p class="ticket-project" id="next-status">Unassigned. Ready to pick up.</p>
         </article>
       </div>
-    </section>
+
+    </div>
+  </section>
 
   <section id="learning">
     <h2>Education and learning</h2>
@@ -232,16 +234,27 @@
       <p class="label">./currently-learning</p>
       <h3>SQL and Korean</h3>
     </article>
+  </section>
 
   <section id="contact" class="card">
     <p class="label">./say-hi</p>
     <h2>Let's talk</h2>
-    <p><a href="mailto:kiranbajwa@live.ca">kiranbajwa@live.ca</a> · <a href="https://linkedin.com/in/kiranbajwa">LinkedIn</a></p>
-  </section>
-</main>
+    <p>
+      <a href="mailto:kiranbajwa@live.ca">kiranbajwa@live.ca</a> ·
+      <a href="https://linkedin.com/in/kiranbajwa" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="kiran-bajwa-resume.pdf" download>Resume</a>
+    </p>
   </section>
 </main>
 
+<div class="panel-backdrop" id="panel-backdrop"></div>
+<aside class="ticket-panel" id="ticket-panel" aria-hidden="true">
+  <div class="panel-top">
+    <span class="ticket-id" id="panel-id"></span>
+    <button class="panel-close" id="panel-close" aria-label="Close ticket">✕</button>
+  </div>
+  <div id="panel-body"></div>
+</aside>
 
 <button id="fix-button" class="fix-button">Let me fix that</button>
 <script src="script.js"></script>
