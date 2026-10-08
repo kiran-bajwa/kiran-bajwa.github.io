@@ -1,5 +1,5 @@
 // Everything that joins the chaos: all cards plus the section headings
-const pieces = document.querySelectorAll('.card, main h2:not(.card h2)');
+const pieces = document.querySelectorAll('.card, .ticket, main h2:not(.card h2)');
 const button = document.querySelector('#fix-button');
 const status = document.querySelector('#status');
 

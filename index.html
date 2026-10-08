@@ -6,6 +6,8 @@
   <title>Kiran Bajwa</title>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Sans:wght@400;500&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+  
 </head>
 <body>
 <div id="stars" aria-hidden="true"></div>
@@ -15,6 +17,7 @@
    <nav>
     <a href="#about">./about</a>
     <a href="#work">./work</a>
+    <a href="kiran-bajwa-resume.pdf" download>./resume</a>
     <a href="#contact">./say-hi</a>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle night mode">☾</button>
   </nav>
@@ -40,39 +43,178 @@
     </ul>
   </section>
 
-  <section id="work">
-    <h2>Work</h2>
+    <section id="work">
+    <div class="board-top">
+      <p class="label">./work</p>
+      <h2>The career board</h2>
+    </div>
+    <p class="board-tip"><i class="ti ti-pointer"></i> Click any ticket to open the full story</p>
 
-    <article class="card">
-      <p class="label">2023 – now · GlossGenius</p>
-      <h3>Manager, Support</h3>
-      <p>Took a 50+ person support org through a major restructure, turned the culture around, and split it cleanly across three new managers.</p>
-      <p>Before that: Manager of Product Ops and Technical Support, Operations Associate, and Customer Success Manager. Cut ticket volume 25% with an AI chatbot and bug resolution time 40% with better Jira workflows.</p>
-    </article>
+    <div class="board">
 
-    <article class="card">
-      <p class="label">2023 – now · The DMZ</p>
-      <h3>Startup Mentor</h3>
-      <p>Helping early-stage founders scale their operations and growth.</p>
-    </article>
+      <!-- ===== Column 1: In progress ===== -->
+      <div class="column">
+        <div class="column-head"><span>in progress</span><span class="count">2</span></div>
 
-    <article class="card">
-      <p class="label">2018 – 2022 · Shopify</p>
-      <h3>Senior Program Manager</h3>
-      <p>Led Shopify Ignite and Shopify for Startups, with partners like Techstars, Google, and Afropunk. Earlier: Growth Strategist and Customer Success Manager, with a 0% churn rate on a $250M+ book of business.</p>
-    </article>
+        <article class="ticket pulse" style="--accent: #0F6E56;">
+          <span class="ticket-open">Open ↗</span>
+          <div class="ticket-head"><i class="ti ti-rocket"></i><span class="ticket-id">KB-08</span></div>
+          <h3 class="ticket-title">Manager, Support</h3>
+          <p class="ticket-project">GlossGenius · 2023 – now</p>
+          <div class="ticket-labels"><span>Support ops</span><span>Leadership</span></div>
+          <p class="ticket-metric"><i class="ti ti-users"></i> 50+ person org led</p>
+          <div class="ticket-foot">
+            <span class="ticket-progress"><span class="bar"><span style="width:100%"></span></span>4/4</span>
+            <span class="avatar">KB</span>
+          </div>
+          <div class="ticket-details" hidden>
+            <p class="label">subtasks</p>
+            <ul class="subtasks">
+              <li>Led a 50+ person org through a major restructure</li>
+              <li>Cut ticket volume 25% with an AI chatbot</li>
+              <li>Cut bug resolution time 40% by rebuilding Jira workflows</li>
+              <li>Built the Voice of Customer program</li>
+            </ul>
+            <p class="label">activity</p>
+            <ul class="activity">
+              <li>Created · Jun 2023 · Customer Success Manager</li>
+              <li>Promoted · Jan 2024 · Operations Associate</li>
+              <li>Promoted · Jun 2024 · Manager, Product Ops</li>
+              <li>Promoted · Jun 2025 · Manager, Support</li>
+            </ul>
+            <p class="label">built with</p>
+            <div class="ticket-labels"><span>Jira</span><span>AI chatbots</span><span>Voice of Customer</span></div>
+          </div>
+        </article>
 
-    <article class="card">
-      <p class="label">2016 – 2018 · Bspoke Media and Humber College</p>
-      <h3>Digital Manager and Research Assistant</h3>
-      <p>Built WordPress and Shopify sites for clients, ran digital strategy, and helped run TechWeek, a student conference with 270+ registrations.</p>
-    </article>
+        <article class="ticket" style="--accent: #7F77DD;">
+          <span class="ticket-open">Open ↗</span>
+          <div class="ticket-head"><i class="ti ti-plant"></i><span class="ticket-id">KB-07</span></div>
+          <h3 class="ticket-title">Startup Mentor</h3>
+          <p class="ticket-project">The DMZ · 2023 – now</p>
+          <div class="ticket-labels"><span>Mentoring</span></div>
+          <div class="ticket-foot">
+            <span class="ticket-progress"><span class="bar"><span style="width:100%"></span></span>1/1</span>
+            <span class="avatar">KB</span>
+          </div>
+          <div class="ticket-details" hidden>
+            <p class="label">subtasks</p>
+            <ul class="subtasks">
+              <li>Mentoring early-stage founders on operations and growth</li>
+            </ul>
+            <p class="label">activity</p>
+            <ul class="activity">
+              <li>Created · Jul 2023</li>
+            </ul>
+            <p class="label">built with</p>
+            <div class="ticket-labels"><span>Founders</span><span>Growth</span></div>
+          </div>
+        </article>
+      </div>
 
-    <article class="card">
-      <p class="label">2007 – 2017 · where it started</p>
-      <h3>The retail floor</h3>
-      <p>Store management at Reitmans and Luxottica, plus years of bookkeeping. Where I learned that every system is really about people.</p>
-    </article>
+      <!-- ===== Column 2: Shipped ===== -->
+      <div class="column">
+        <div class="column-head"><span>shipped</span><span class="count">3</span></div>
+
+        <article class="ticket" style="--accent: #D4537E;">
+          <span class="ticket-open">Open ↗</span>
+          <div class="ticket-head"><i class="ti ti-building-store"></i><span class="ticket-id">KB-05</span></div>
+          <h3 class="ticket-title">Senior Program Manager</h3>
+          <p class="ticket-project">Shopify · 2018 – 2022</p>
+          <div class="ticket-labels"><span>Program building</span><span>Partnerships</span></div>
+          <p class="ticket-metric"><i class="ti ti-trending-down"></i> 0% churn on a $250M+ book</p>
+          <div class="ticket-foot">
+            <span class="ticket-progress"><span class="bar"><span style="width:100%"></span></span>4/4</span>
+            <span class="avatar">KB</span>
+          </div>
+          <div class="ticket-details" hidden>
+            <p class="label">subtasks</p>
+            <ul class="subtasks">
+              <li>Built Shopify for Startups from scratch</li>
+              <li>Led the Shopify Ignite program</li>
+              <li>Partnered with Techstars, Google, and Afropunk</li>
+              <li>Kept churn at 0% across 100+ accounts</li>
+            </ul>
+            <p class="label">activity</p>
+            <ul class="activity">
+              <li>Created · May 2018 · Customer Success Manager</li>
+              <li>Promoted · Mar 2020 · Growth Strategist</li>
+              <li>Promoted · May 2021 · Senior Program Manager</li>
+              <li>Shipped · Aug 2022</li>
+            </ul>
+            <p class="label">built with</p>
+            <div class="ticket-labels"><span>CRM</span><span>Email automation</span><span>Partnerships</span></div>
+          </div>
+        </article>
+
+        <article class="ticket" style="--accent: #EF9F27;">
+          <span class="ticket-open">Open ↗</span>
+          <div class="ticket-head"><i class="ti ti-code"></i><span class="ticket-id">KB-03</span></div>
+          <h3 class="ticket-title">Digital Manager</h3>
+          <p class="ticket-project">Bspoke and Humber · 2016 – 2018</p>
+          <div class="ticket-labels"><span>Web</span><span>Events</span></div>
+          <p class="ticket-metric"><i class="ti ti-ticket"></i> 270+ conference registrations</p>
+          <div class="ticket-foot">
+            <span class="ticket-progress"><span class="bar"><span style="width:100%"></span></span>2/2</span>
+            <span class="avatar">KB</span>
+          </div>
+          <div class="ticket-details" hidden>
+            <p class="label">subtasks</p>
+            <ul class="subtasks">
+              <li>Built WordPress and Shopify sites for clients</li>
+              <li>Helped run TechWeek, 270+ registrations</li>
+            </ul>
+            <p class="label">activity</p>
+            <ul class="activity">
+              <li>Created · Sep 2016 · Research Assistant, Humber</li>
+              <li>Added · Apr 2017 · Digital Manager, Bspoke Media</li>
+              <li>Shipped · May 2018</li>
+            </ul>
+            <p class="label">built with</p>
+            <div class="ticket-labels"><span>WordPress</span><span>Shopify</span><span>Google Analytics</span></div>
+          </div>
+        </article>
+
+        <article class="ticket" style="--accent: #B4B2A9;">
+          <span class="ticket-open">Open ↗</span>
+          <div class="ticket-head"><i class="ti ti-shopping-bag"></i><span class="ticket-id">KB-01</span></div>
+          <h3 class="ticket-title">Store management</h3>
+          <p class="ticket-project">The retail floor · 2007 – 2017</p>
+          <div class="ticket-labels"><span>Foundation</span></div>
+          <div class="ticket-foot">
+            <span class="ticket-progress"><span class="bar"><span style="width:100%"></span></span>3/3</span>
+            <span class="avatar">KB</span>
+          </div>
+          <div class="ticket-details" hidden>
+            <p class="label">subtasks</p>
+            <ul class="subtasks">
+              <li>Ran stores at Reitmans and Luxottica</li>
+              <li>Bookkeeping at Intercity Express</li>
+              <li>Learned that every system is really about people</li>
+            </ul>
+            <p class="label">activity</p>
+            <ul class="activity">
+              <li>Created · 2007</li>
+              <li>Shipped · Apr 2017</li>
+            </ul>
+            <p class="label">built with</p>
+            <div class="ticket-labels"><span>Excel</span><span>QuickBooks</span><span>People skills</span></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===== Column 3: Up next ===== -->
+      <div class="column">
+        <div class="column-head"><span>up next</span><span class="count">1</span></div>
+
+        <article class="ticket ticket-next" style="--accent: #D85A30;">
+          <div class="ticket-head"><i class="ti ti-plus"></i><span class="ticket-id">KB-09</span></div>
+          <h3 class="ticket-title">Your team?</h3>
+          <p class="ticket-project">Unassigned · ready to pick up</p>
+        </article>
+      </div>
+
+    </div>
   </section>
 
   <section id="learning">

@@ -9,7 +9,7 @@
   --mint-wash: #E1F5EE;
   --ink: #4A1B0C;
   --card: #FFFFFF;
-
+--column: #F5C4B3;
   --font-display: 'Bricolage Grotesque', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
@@ -151,11 +151,7 @@ h3 {
   gap: 20px;
 }
 
-#work h2, #learning h2 {
-  grid-column: 1 / -1;
-}
-
-#work article:first-of-type {
+#learning h2 {
   grid-column: 1 / -1;
 }
 
@@ -214,6 +210,207 @@ main h2 {
   position: relative;
   transition: transform 0.7s cubic-bezier(.34, 1.56, .64, 1);
 }
+
+/* ===== Career board ===== */
+#work {
+  margin-top: 64px;
+}
+
+.board-top h2 {
+  margin-top: 0;
+}
+
+.board-tip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  background: var(--mint-wash);
+  color: var(--pine);
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin: 4px 0 16px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.column {
+  background: var(--column);
+  border-radius: 18px;
+  padding: 12px;
+  min-height: 300px;
+}
+
+.column-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin: 2px 4px 12px;
+}
+
+.count {
+  background: var(--card);
+  border-radius: 999px;
+  padding: 0 8px;
+}
+
+.ticket {
+  position: relative;
+  background: var(--card);
+  border-radius: 12px;
+  border-left: 5px solid var(--accent);
+  padding: 12px 14px 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.3s;
+}
+
+.ticket:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 -2px rgba(74, 27, 12, 0.1);
+}
+
+.ticket-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+}
+
+.ticket-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #888780;
+}
+
+.ticket-open {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.3s;
+}
+
+.ticket:hover .ticket-open {
+  opacity: 1;
+  transform: none;
+}
+
+.ticket-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 6px 0 2px;
+}
+
+.ticket-project {
+  font-size: 0.8rem;
+  color: var(--tangerine);
+  margin: 0 0 8px;
+}
+
+.ticket-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ticket-labels span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: #FAEEDA;
+  color: #854F0B;
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+
+.ticket-metric {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--violet);
+  margin: 8px 0 0;
+}
+
+.ticket-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #F0E3DE;
+  padding-top: 8px;
+  margin-top: 10px;
+}
+
+.ticket-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #5F5E5A;
+}
+
+.ticket-progress .bar {
+  width: 48px;
+  height: 5px;
+  border-radius: 3px;
+  background: #F1EFE8;
+  overflow: hidden;
+}
+
+.ticket-progress .bar span {
+  display: block;
+  height: 100%;
+  background: var(--pine);
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-next {
+  border: 2px dashed var(--tangerine);
+  background: transparent;
+}
+
+.ticket.pulse {
+  animation: ticket-pulse 1.8s infinite;
+}
+
+@keyframes ticket-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(15, 110, 86, 0.45); }
+  70%  { box-shadow: 0 0 0 10px rgba(15, 110, 86, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(15, 110, 86, 0); }
+}
+
+/* Touch screens have no hover, so always show "Open" */
+@media (hover: none) {
+  .ticket-open {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ===== Chaos mode ===== */
 body {
   overflow-x: hidden;
@@ -293,6 +490,10 @@ body.night {
   --ink: #F1EFE8;
   --pine: #5DCAA5;
   --mint-wash: #0F3D33;
+    --column: #3C3489;
+}
+body.night .ticket-metric {
+  color: var(--gold);
 }
 
 header, main {
@@ -345,8 +546,14 @@ body.night #stars {
 @media (max-width: 700px) {   header {
     flex-wrap: wrap;
     gap: 10px;
+      .board {
+    grid-template-columns: 1fr;
   }
-    #work, #learning {
+  .column {
+    min-height: auto;
+  }
+  }
+    #learning {
     grid-template-columns: 1fr;
   }
 
