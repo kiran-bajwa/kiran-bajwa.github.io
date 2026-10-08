@@ -728,21 +728,26 @@ body.chaos .fix-button:hover {
   pointer-events: none;
 }
 
+.rechaos-wrap {
+  text-align: center;
+  margin-top: 32px;
+}
+
 .rechaos {
-  margin-top: 18px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  background: none;
-  color: #FFFFFF;
-  border: 1.5px dashed #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
   border-radius: 999px;
-  padding: 6px 14px;
+  background: var(--pine);
+  color: #FFFFFF;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(.34, 1.8, .64, 1);
 }
 
 .rechaos:hover {
-  transform: rotate(-3deg) scale(1.05);
+  transform: scale(1.06) rotate(-2deg);
 }
 
 /* ===== Night mode ===== */
