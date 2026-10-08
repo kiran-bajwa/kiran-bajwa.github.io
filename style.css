@@ -572,6 +572,77 @@ main h2 {
   background: var(--tangerine);
 }
 
+/* ===== Kick-off ticket ===== */
+.column {
+  transition: background 0.3s;
+}
+
+.column.drop-ready {
+  background: #9FE1CB;
+}
+
+.ticket-next {
+  cursor: grab;
+  touch-action: none;
+}
+
+.ticket-next.dragging {
+  cursor: grabbing;
+  z-index: 50;
+  box-shadow: 0 12px 24px -8px rgba(74, 27, 12, 0.25);
+}
+
+.ticket-next.claimed {
+  border: none;
+  border-left: 5px solid var(--pine);
+  background: var(--card);
+  cursor: pointer;
+}
+
+.drag-hint {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--tangerine);
+}
+
+.ticket-next.claimed .drag-hint {
+  color: var(--pine);
+}
+
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.kickoff-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kickoff-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: var(--mint-wash);
+  color: var(--pine);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s cubic-bezier(.34, 1.8, .64, 1);
+}
+
+.kickoff-links a:hover {
+  transform: translateX(4px);
+}
+
 /* ===== Chaos mode ===== */
 body {
   overflow-x: hidden;

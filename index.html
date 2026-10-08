@@ -53,8 +53,8 @@
     <div class="board">
 
       <!-- ===== Column 1: In progress ===== -->
-      <div class="column">
-        <div class="column-head"><span>in progress</span><span class="count">2</span></div>
+      <div class="column"> id="col-progress">
+        <div class="column-head"><span>in progress</span><span class="count" id="count-progress">2</span></div>
 
         <article class="ticket pulse" style="--accent: #0F6E56;">
           <span class="ticket-open">Open ↗</span>
@@ -204,18 +204,20 @@
       </div>
 
       <!-- ===== Column 3: Up next ===== -->
-      <div class="column">
-        <div class="column-head"><span>up next</span><span class="count">1</span></div>
+            <div class="column">
+        <div class="column-head"><span>up next</span><span class="count" id="count-next">1</span></div>
 
-        <article class="ticket ticket-next" style="--accent: #D85A30;">
-          <div class="ticket-head"><i class="ti ti-plus"></i><span class="ticket-id">KB-09</span></div>
+        <article class="ticket ticket-next" id="next-ticket" style="--accent: #D85A30;">
+          <div class="ticket-head">
+            <i class="ti ti-plus"></i>
+            <span class="ticket-id">KB-09</span>
+            <span class="drag-hint">drag me to in progress</span>
+          </div>
           <h3 class="ticket-title">Your team?</h3>
-          <p class="ticket-project">Unassigned · ready to pick up</p>
+          <p class="ticket-project" id="next-status">Unassigned. Ready to pick up.</p>
         </article>
       </div>
-
-    </div>
-  </section>
+    </section>
 
   <section id="learning">
     <h2>Education and learning</h2>
@@ -240,14 +242,6 @@
   </section>
 </main>
 
-<div class="panel-backdrop" id="panel-backdrop"></div>
-<aside class="ticket-panel" id="ticket-panel" aria-hidden="true">
-  <div class="panel-top">
-    <span class="ticket-id" id="panel-id"></span>
-    <button class="panel-close" id="panel-close" aria-label="Close ticket">✕</button>
-  </div>
-  <div id="panel-body"></div>
-</aside>
 
 <button id="fix-button" class="fix-button">Let me fix that</button>
 <script src="script.js"></script>

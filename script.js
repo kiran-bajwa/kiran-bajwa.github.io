@@ -186,3 +186,126 @@ backdrop.addEventListener('click', closeTicket);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeTicket();
 });
+
+// ===== Drag "Your team?" to kick off a project =====
+const nextTicket = document.querySelector('#next-ticket');
+const progressColumn = document.querySelector('#col-progress');
+
+let dragging = false;
+let moved = false;
+let claimed = false;
+let startX = 0;
+let startY = 0;
+
+// Is the pointer currently over the In progress column?
+function overColumn(x, y) {
+  const r = progressColumn.getBoundingClientRect();
+  return x > r.left && x < r.right && y > r.top && y < r.bottom;
+}
+
+// The panel that opens once the ticket is picked up
+function openKickoff() {
+  panelId.textContent = 'KB-09';
+  panel.style.setProperty('--accent', 'var(--pine)');
+  panelBody.innerHTML = `
+    <span class="panel-status">in progress</span>
+    <h3 class="panel-title">Kick off a project with Kiran</h3>
+    <p class="ticket-project">Status: excited</p>
+    <p class="label">next steps</p>
+    <ul class="kickoff-links">
+      <li><a href="mailto:kiranbajwa@live.ca?subject=Let's%20kick%20off%20a%20project"><i class="ti ti-mail"></i> Say hi: kiranbajwa@live.ca</a></li>
+      <li><a href="https://linkedin.com/in/kiranbajwa" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> Connect on LinkedIn</a></li>
+      <li><a href="kiran-bajwa-resume.pdf" download><i class="ti ti-download"></i> Download my resume</a></li>
+    </ul>
+  `;
+  panel.classList.add('open');
+  backdrop.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+  boardTip.classList.add('gone');
+}
+
+// A little confetti burst at a spot on the screen
+function confetti(x, y) {
+  const colors = ['#0F6E56', '#D4537E', '#FAC775', '#7F77DD', '#D85A30'];
+  for (let i = 0; i < 34; i++) {
+    const bit = document.createElement('span');
+    bit.className = 'confetti';
+    bit.style.background = colors[i % colors.length];
+    bit.style.left = x + 'px';
+    bit.style.top = y + 'px';
+    document.body.appendChild(bit);
+    const angle = random(0, Math.PI * 2);
+    const distance = random(60, 170);
+    bit.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance + 80}px) rotate(${random(0, 540)}deg)`, opacity: 0 }
+    ], { duration: 1200, easing: 'cubic-bezier(.2, .8, .3, 1)' }).onfinish = () => bit.remove();
+  }
+}
+
+// Move the ticket into In progress and celebrate
+function claimTicket(x, y) {
+  claimed = true;
+  nextTicket.style.transform = '';
+  progressColumn.insertBefore(nextTicket, progressColumn.children[1]);
+  nextTicket.classList.add('claimed');
+  nextTicket.querySelector('.drag-hint').textContent = 'kicked off';
+  document.querySelector('#next-status').textContent = 'Assigned to Kiran. Let\'s go.';
+  document.querySelector('#count-progress').textContent = '3';
+  document.querySelector('#count-next').textContent = '0';
+  confetti(x, y);
+  setTimeout(openKickoff, 600);
+}
+
+nextTicket.addEventListener('pointerdown', e => {
+  if (claimed) {
+    openKickoff();
+    return;
+  }
+  if (isChaos) return;
+  dragging = true;
+  moved = false;
+  startX = e.clientX;
+  startY = e.clientY;
+  nextTicket.setPointerCapture(e.pointerId);
+  nextTicket.style.transition = 'none';
+  nextTicket.classList.add('dragging');
+});
+
+nextTicket.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+  if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+  nextTicket.style.transform = `translate(${dx}px, ${dy}px) rotate(-4deg)`;
+  progressColumn.classList.toggle('drop-ready', overColumn(e.clientX, e.clientY));
+});
+
+nextTicket.addEventListener('pointerup', e => {
+  if (!dragging) return;
+  dragging = false;
+  nextTicket.classList.remove('dragging');
+  progressColumn.classList.remove('drop-ready');
+  nextTicket.style.transition = '';
+
+  // A tap (no real movement) or a drop on In progress both claim it
+  if (!moved || overColumn(e.clientX, e.clientY)) {
+    claimTicket(e.clientX, e.clientY);
+  } else {
+    nextTicket.style.transform = ''; // dropped elsewhere: spring back home
+  }
+});
+
+// Keyboard users: Enter picks it up too
+nextTicket.setAttribute('tabindex', '0');
+nextTicket.setAttribute('role', 'button');
+nextTicket.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  e.preventDefault();
+  if (claimed) {
+    openKickoff();
+  } else {
+    const r = nextTicket.getBoundingClientRect();
+    claimTicket(r.left + r.width / 2, r.top + 20);
+  }
+});
