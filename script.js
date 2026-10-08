@@ -84,3 +84,36 @@ if (!reduceMotion) {
   pieces.forEach(piece => piece.style.transition = '');
   autoFix = setTimeout(makeCalm, 7000);
 }
+// ===== Night mode =====
+const themeToggle = document.querySelector('#theme-toggle');
+const starsLayer = document.querySelector('#stars');
+
+// Sprinkle 80 stars at random spots, sizes, and twinkle timings
+for (let i = 0; i < 80; i++) {
+  const star = document.createElement('span');
+  star.className = 'star';
+  const size = random(1, 3);
+  star.style.width = size + 'px';
+  star.style.height = size + 'px';
+  star.style.left = random(0, 100) + '%';
+  star.style.top = random(0, 100) + '%';
+  star.style.animationDelay = random(0, 3) + 's';
+  starsLayer.appendChild(star);
+}
+
+function setNight(on) {
+  document.body.classList.toggle('night', on);
+  themeToggle.textContent = on ? '☀' : '☾';
+  try {
+    localStorage.setItem('night', on ? 'yes' : 'no');
+  } catch (e) {}
+}
+
+themeToggle.addEventListener('click', () => {
+  setNight(!document.body.classList.contains('night'));
+});
+
+// Remember the visitor's choice from last time
+try {
+  if (localStorage.getItem('night') === 'yes') setNight(true);
+} catch (e) {}
