@@ -8,10 +8,19 @@
   --mint-wash: #E1F5EE;
   --ink: #4A1B0C;
   --card: #FFFFFF;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 body {
   background: var(--peach);
   color: var(--ink);
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 4rem;
 }
