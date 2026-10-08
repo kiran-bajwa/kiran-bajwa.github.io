@@ -144,13 +144,13 @@ h3 {
 }
 
 /* ===== Work and About grids ===== */
-#work, #about {
+#work, #learning {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
-#work h2, #about h2 {
+#work h2, #learning h2 {
   grid-column: 1 / -1;
 }
 
@@ -179,10 +179,40 @@ h3 {
   color: #FFFFFF;
   font-weight: 500;
 }
+/* ===== About ===== */
+.about {
+  margin-top: 20px;
+}
+
+.about h2 {
+  margin-top: 0;
+}
+
+.about p {
+  max-width: 680px;
+}
+
+.facts {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.facts li {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--mint-wash);
+  color: var(--pine);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
 
 /* ===== Phones ===== */
 @media (max-width: 700px) {
-  #work, #about {
+  #work, #learning {
     grid-template-columns: 1fr;
   }
 
