@@ -758,13 +758,66 @@ body {
 body.night {
   --peach: #0B1026;
   --card: #161D3A;
-  --column: #1F2850;
+  --column: #121834;
   --ink: #F1EFE8;
   --pine: #5DCAA5;
   --mint-wash: #0F3D33;
 }
+
+/* ----- Sunset gradient hero ----- */
+body.night .hero {
+  background: linear-gradient(135deg, #EF9F27 0%, var(--tangerine) 45%, var(--pink) 100%);
+}
+
+body.night .hero .label {
+  color: #412402;
+}
+
+body.night .hero p {
+  color: #FFF4EE;
+}
+
+body.night .highlight {
+  background: var(--violet);
+}
+
+/* ----- Tickets washed in their company color ----- */
+body.night .ticket {
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      color-mix(in srgb, var(--accent) 6%, transparent)),
+    #1A2148;
+}
+
+body.night .ticket-next:not(.claimed) {
+  background: transparent;
+}
+
+body.night .ticket-project {
+  color: #F0997B;
+}
+
 body.night .ticket-metric {
   color: var(--gold);
+}
+
+/* ----- Board details tuned for the dark ----- */
+body.night .ticket-labels span {
+  background: rgba(250, 199, 117, 0.14);
+  color: var(--gold);
+}
+
+body.night .ticket-foot {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+body.night .ticket-progress {
+  color: #B4B2A9;
+}
+
+body.night .ticket-progress .bar {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 header, main {
