@@ -82,5 +82,5 @@ if (!reduceMotion) {
   makeChaos();
   document.body.offsetHeight; // makes the browser apply the pile instantly
   pieces.forEach(piece => piece.style.transition = '');
-  autoFix = setTimeout(makeCalm, 4000);
+  autoFix = setTimeout(makeCalm, 7000);
 }
