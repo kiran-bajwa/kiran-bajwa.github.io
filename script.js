@@ -1,5 +1,5 @@
 // Everything that joins the chaos: all cards plus the section headings
-const pieces = document.querySelectorAll('.card, .ticket, main h2:not(.card h2)');
+const pieces = document.querySelectorAll('.card, .column, .ticket, .board-tip, .board-top .label, main h2:not(.card h2)');
 const button = document.querySelector('#fix-button');
 const status = document.querySelector('#status');
 
@@ -39,6 +39,7 @@ function makeChaos() {
   });
 
   document.body.classList.add('chaos');
+  document.documentElement.classList.add('chaos-lock');
   status.textContent = 'System status: chaos';
   button.textContent = 'Let me fix that';
   isChaos = true;
@@ -52,6 +53,7 @@ function makeCalm() {
   });
 
   document.body.classList.remove('chaos');
+  document.documentElement.classList.remove('chaos-lock');
   status.textContent = 'All systems operational';
   button.textContent = 'Bring back the chaos';
   isChaos = false;
@@ -65,15 +67,40 @@ function makeCalm() {
   }, 1500);
 }
 
-// The button toggles between the two states
+// Scroll back to the top first if needed, then scatter
+function bringBackChaos() {
+  if (window.scrollY < 5) {
+    makeChaos();
+    return;
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const started = Date.now();
+  (function waitForTop() {
+    if (window.scrollY < 5 || Date.now() - started > 1500) {
+      makeChaos();
+    } else {
+      requestAnimationFrame(waitForTop);
+    }
+  })();
+}
+
+// The floating button toggles between the two states
 button.addEventListener('click', () => {
   clearTimeout(autoFix);
   if (isChaos) {
     makeCalm();
   } else {
-    makeChaos();
+    bringBackChaos();
   }
 });
+
+// Tuck the floating button away once you've scrolled past the top
+window.addEventListener('scroll', () => {
+  button.classList.toggle('tucked', !isChaos && window.scrollY > window.innerHeight * 0.5);
+});
+
+// The "Break it again" button at the bottom of the page
+document.querySelector('#rechaos').addEventListener('click', bringBackChaos);
 
 // On page load: start already in a pile, then fix itself after 4 seconds
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
