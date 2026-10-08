@@ -106,7 +106,7 @@ h3 {
 }
 
 .highlight {
-  background: var(--pink);
+  background: var(--violet);
   padding: 0 10px;
   border-radius: 10px;
 }
@@ -130,7 +130,7 @@ h3 {
 
 /* ===== Hero ===== */
 .hero {
-  background: var(--violet);
+  background: linear-gradient(135deg, var(--violet) 0%, var(--pink) 60%, var(--gold) 100%);
   color: #FFFFFF;
   padding: 48px 40px;
 }
@@ -140,7 +140,7 @@ h3 {
 }
 
 .hero p {
-  color: #CECBF6;
+  color: #FBEAF0;
   max-width: 560px;
 }
 
@@ -262,7 +262,11 @@ main h2 {
 
 .ticket {
   position: relative;
-  background: var(--card);
+background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 16%, transparent),
+      color-mix(in srgb, var(--accent) 3%, transparent)),
+    var(--card);
   border-radius: 12px;
   border-left: 5px solid var(--accent);
   padding: 12px 14px 10px;
@@ -777,9 +781,6 @@ body.night .hero p {
   color: #FFF4EE;
 }
 
-body.night .highlight {
-  background: var(--violet);
-}
 
 /* ----- Tickets washed in their company color ----- */
 body.night .ticket {
