@@ -282,6 +282,65 @@ body.chaos .fix-button:hover {
   100% { box-shadow: 0 0 0 0 rgba(15, 110, 86, 0); }
 }
 
+/* ===== Night mode ===== */
+body {
+  transition: background 0.6s, color 0.6s;
+}
+
+body.night {
+  --peach: #1A1745;
+  --card: #2E2870;
+  --ink: #F1EFE8;
+  --pine: #5DCAA5;
+  --mint-wash: #0F3D33;
+}
+
+header, main {
+  position: relative;
+  z-index: 1;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s;
+  z-index: 0;
+}
+
+body.night #stars {
+  opacity: 1;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #FFFFFF;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: none;
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(.34, 1.8, .64, 1);
+}
+
+.theme-toggle:hover {
+  transform: rotate(-20deg) scale(1.1);
+}
+
 /* ===== Phones ===== */
 @media (max-width: 700px) {   header {
     flex-wrap: wrap;
