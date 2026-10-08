@@ -212,7 +212,7 @@ h3 {
 
 /* ===== Phones ===== */
 @media (max-width: 700px) {
-  #work, #learning {
+    #work, #learning {
     grid-template-columns: 1fr;
   }
 
