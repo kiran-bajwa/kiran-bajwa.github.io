@@ -1,5 +1,5 @@
-// Grab the things we need from the page
-const cards = document.querySelectorAll('.card');
+// Everything that joins the chaos: all cards plus the section headings
+const pieces = document.querySelectorAll('.card, main h2:not(.card h2)');
 const button = document.querySelector('#fix-button');
 const status = document.querySelector('#status');
 
@@ -11,31 +11,31 @@ function random(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// Pile every card into a messy heap in the middle of the screen
+// Throw every piece into a wild heap across the screen
 function makeChaos() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  cards.forEach(card => {
-    // Where is this card right now?
-    const rect = card.getBoundingClientRect();
-    const cardCenterX = rect.left + rect.width / 2;
-    const cardCenterY = rect.top + rect.height / 2;
+  pieces.forEach(piece => {
+    // Where is this piece right now, and how big is it?
+    const rect = piece.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
 
-    // Pick a random spot in the visible part of the screen
-    const targetX = random(screenWidth * 0.25, screenWidth * 0.75);
-    const targetY = random(screenHeight * 0.2, screenHeight * 0.6);
+    // Pick a random spot anywhere on the visible screen
+    const targetX = random(screenWidth * 0.12, screenWidth * 0.88);
+    const targetY = random(screenHeight * 0.12, screenHeight * 0.88);
 
-    // How far does it need to travel to get there?
-    const moveX = targetX - cardCenterX;
-    const moveY = targetY - cardCenterY;
+    // Shrink everything to a similar size, so big cards don't hide small ones
+    const targetWidth = random(0.3, 0.5) * Math.min(screenWidth, 1000);
+    const size = Math.min(targetWidth / rect.width, 1);
 
-    const tilt = random(-25, 25);
-    const size = random(0.6, 0.85);
+    const tilt = random(-35, 35);
 
-    card.style.transitionDelay = '0s';
-    card.style.zIndex = Math.floor(random(1, 20));
-    card.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${tilt}deg) scale(${size})`;
+    piece.style.transitionDelay = '0s';
+    piece.style.zIndex = Math.floor(random(1, 50));
+    piece.style.transform =
+      `translate(${targetX - centerX}px, ${targetY - centerY}px) rotate(${tilt}deg) scale(${size})`;
   });
 
   document.body.classList.add('chaos');
@@ -44,5 +44,43 @@ function makeChaos() {
   isChaos = true;
 }
 
-// Send every card home, one after another
-func
+// Send every piece home, one after another
+function makeCalm() {
+  pieces.forEach((piece, i) => {
+    piece.style.transitionDelay = `${i * 0.05}s`;
+    piece.style.transform = '';
+  });
+
+  document.body.classList.remove('chaos');
+  status.textContent = 'All systems operational';
+  button.textContent = 'Bring back the chaos';
+  isChaos = false;
+
+  // Tidy up once everything has landed
+  setTimeout(() => {
+    pieces.forEach(piece => {
+      piece.style.transitionDelay = '';
+      piece.style.zIndex = '';
+    });
+  }, 1500);
+}
+
+// The button toggles between the two states
+button.addEventListener('click', () => {
+  clearTimeout(autoFix);
+  if (isChaos) {
+    makeCalm();
+  } else {
+    makeChaos();
+  }
+});
+
+// On page load: start already in a pile, then fix itself after 4 seconds
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion) {
+  pieces.forEach(piece => piece.style.transition = 'none');
+  makeChaos();
+  document.body.offsetHeight; // makes the browser apply the pile instantly
+  pieces.forEach(piece => piece.style.transition = '');
+  autoFix = setTimeout(makeCalm, 4000);
+}
