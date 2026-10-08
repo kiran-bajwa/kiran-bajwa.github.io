@@ -9,7 +9,7 @@
   --mint-wash: #E1F5EE;
   --ink: #4A1B0C;
   --card: #FFFFFF;
---column: #F5C4B3;
+  --column: rgba(255, 255, 255, 0.22);
   --font-display: 'Bricolage Grotesque', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
@@ -22,7 +22,7 @@
 
 body {
   margin: 0;
-  background: var(--peach);
+  background: linear-gradient(180deg, #FBF0E4 0%, #FAE3D3 26%, #F7D3D9 52%, #DCE8EE 74%, #BFE6E0 100%);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -241,6 +241,9 @@ main h2 {
 
 .column {
   background: var(--column);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 18px;
   padding: 12px;
   min-height: 300px;
@@ -262,13 +265,16 @@ main h2 {
 
 .ticket {
   position: relative;
-background:
+  background:
     linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 16%, transparent),
-      color-mix(in srgb, var(--accent) 3%, transparent)),
-    var(--card);
-  border-radius: 12px;
+      color-mix(in srgb, var(--accent) 20%, transparent),
+      color-mix(in srgb, var(--accent) 4%, transparent)),
+    rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-left: 5px solid var(--accent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
   padding: 12px 14px 10px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -606,7 +612,7 @@ background:
 .ticket-next.claimed {
   border: none;
   border-left: 5px solid var(--pine);
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.45);
   cursor: pointer;
 }
 
@@ -766,6 +772,7 @@ body.night {
   --ink: #F1EFE8;
   --pine: #5DCAA5;
   --mint-wash: #0F3D33;
+  background: var(--peach);
 }
 
 /* ----- Sunset gradient hero ----- */
@@ -789,6 +796,29 @@ body.night .ticket {
       color-mix(in srgb, var(--accent) 22%, transparent),
       color-mix(in srgb, var(--accent) 6%, transparent)),
     #1A2148;
+}
+
+/* ----- Tickets washed in their company color ----- */
+body.night .ticket {
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      color-mix(in srgb, var(--accent) 6%, transparent)),
+    #1A2148;
+}
+
+body.night .column {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.night .ticket {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-right-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.night .ticket-next:not(.claimed) {
+  background: transparent;
 }
 
 body.night .ticket-next:not(.claimed) {
