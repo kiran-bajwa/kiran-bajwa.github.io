@@ -24,3 +24,13 @@ h1 {
   font-weight: 800;
   font-size: 4rem;
 }
+main, header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
