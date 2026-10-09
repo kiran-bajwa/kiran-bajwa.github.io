@@ -407,6 +407,11 @@ main h2 {
   animation: ticket-pulse 1.8s infinite;
 }
 
+/* Labels live in the ticket panel, not on the card */
+.ticket > .ticket-labels {
+  display: none;
+}
+
 @keyframes ticket-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(15, 110, 86, 0.45); }
   70%  { box-shadow: 0 0 0 10px rgba(15, 110, 86, 0); }

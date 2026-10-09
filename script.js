@@ -168,10 +168,12 @@ function openTicket(ticket) {
   // Fill the panel with it
   panelId.textContent = id;
   panel.style.setProperty('--accent', accent);
+    const labels = ticket.querySelector(':scope > .ticket-labels');
   panelBody.innerHTML = `
     <span class="panel-status">${status}</span>
     <h3 class="panel-title">${title}</h3>
     <p class="ticket-project">${project}</p>
+    ${labels ? labels.outerHTML : ''}
     ${details}
   `;
 
