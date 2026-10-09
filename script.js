@@ -339,3 +339,72 @@ nextTicket.addEventListener('keydown', e => {
     claimTicket(r.left + r.width / 2, r.top + 20);
   }
 });
+
+// ===== Contact section =====
+
+// Rotating headline (edit this list anytime)
+const phrases = [
+  'your next launch',
+  'elevating the customer experience',
+  'scaling your support org',
+  'building programs from scratch',
+  'developing products your customers actually care about',
+  'dogs, honestly'
+];
+const rotatingWord = document.querySelector('#rotating-word');
+let phraseIndex = 0;
+
+function nextPhrase() {
+  rotatingWord.classList.add('out');
+  setTimeout(() => {
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    rotatingWord.textContent = phrases[phraseIndex];
+    rotatingWord.classList.remove('out');
+    rotatingWord.classList.add('pre');
+    requestAnimationFrame(() => requestAnimationFrame(() => rotatingWord.classList.remove('pre')));
+    // Longer phrases stay up longer so they're readable
+    setTimeout(nextPhrase, 1600 + phrases[phraseIndex].length * 45);
+  }, 350);
+}
+
+if (!reduceMotion) {
+  setTimeout(nextPhrase, 2400);
+}
+
+// Click to copy email
+const copyButton = document.querySelector('#copy-email');
+const emailText = document.querySelector('#email-text');
+const emailIcon = document.querySelector('#email-icon');
+
+copyButton.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText('kiranbajwa@live.ca');
+  } catch (e) {
+    // If copying isn't allowed, open their email app instead
+    window.location.href = 'mailto:kiranbajwa@live.ca';
+    return;
+  }
+  copyButton.classList.add('copied');
+  emailIcon.className = 'ti ti-check';
+  emailText.textContent = 'Copied!';
+  setTimeout(() => {
+    copyButton.classList.remove('copied');
+    emailIcon.className = 'ti ti-copy';
+    emailText.textContent = 'kiranbajwa@live.ca';
+  }, 1600);
+});
+
+// Live Toronto time
+const localTime = document.querySelector('#local-time');
+
+function updateLocalTime() {
+  const time = new Date().toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'America/Toronto'
+  }).toLowerCase();
+  localTime.textContent = `It's ${time} in Toronto · I usually reply within a day`;
+}
+
+updateLocalTime();
+setInterval(updateLocalTime, 30000);

@@ -733,6 +733,113 @@ body.night .shoreline {
     animation: none;
   }
 }
+
+/* ===== Contact section ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.contact-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  min-height: 3.5em;
+}
+
+.rotator {
+  color: var(--gold);
+}
+
+#rotating-word {
+  display: inline-block;
+  transition: opacity 0.35s, transform 0.35s cubic-bezier(.34, 1.5, .64, 1);
+}
+
+#rotating-word.out {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+#rotating-word.pre {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.34, 1.8, .64, 1), background 0.3s;
+}
+
+.contact-pill:hover {
+  transform: translateY(-3px) rotate(-2deg);
+}
+
+.email-pill {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #4A1B0C;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.email-pill.copied {
+  background: #E1F5EE;
+  border-color: #E1F5EE;
+  color: #0F6E56;
+}
+
+.contact-live {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin: 20px 0 0;
+  color: #FAECE7;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9FE1CB;
+  animation: live-pulse 2s infinite;
+}
+
+@keyframes live-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(159, 225, 203, 0.7); }
+  70%  { box-shadow: 0 0 0 8px rgba(159, 225, 203, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(159, 225, 203, 0); }
+}
+
+@media (max-width: 700px) {
+  .contact-title {
+    min-height: 4.6em;
+  }
+}
+
 /* ===== Chaos mode ===== */
 body {
   overflow-x: hidden;
