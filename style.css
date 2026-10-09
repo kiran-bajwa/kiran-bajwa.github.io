@@ -1124,6 +1124,11 @@ body.night .level span.half {
   color: var(--pine);
 }
 
+/* The banner says "exceeding SLA" once; the rows don't need to repeat it */
+.value-head:not(.static) .value-status {
+  display: none;
+}
+
 /* Value boxes */
 .value-box {
   background: rgba(255, 255, 255, 0.65);
