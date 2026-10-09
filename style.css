@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: linear-gradient(180deg, #FBF0E4 0%, #FAE3D3 26%, #F7D3D9 52%, #DCE8EE 74%, #BFE6E0 100%);
@@ -46,6 +50,11 @@ header {
   align-items: center;
   padding-top: 24px;
   padding-bottom: 24px;
+}
+
+.logo a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .logo {
