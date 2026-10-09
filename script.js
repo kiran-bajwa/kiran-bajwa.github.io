@@ -247,8 +247,7 @@ function openKickoff() {
     <ul class="kickoff-links">
       <li><a href="mailto:kiranbajwa@live.ca?subject=Let's%20kick%20off%20a%20project"><i class="ti ti-mail"></i> Say hi: kiranbajwa@live.ca</a></li>
       <li><a href="https://linkedin.com/in/kiranbajwa" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> Connect on LinkedIn</a></li>
-      <li><a href="kiran-bajwa-resume.pdf" download><i class="ti ti-download"></i> Download my resume</a></li>
-    </ul>
+      <li><a href="https://docs.google.com/document/d/1aalW_8JHcVJtJx7c7heSkz-cE3h51K4_9Hvi_hPkad4/export?format=pdf" target="_blank" rel="noopener"><i class="ti ti-download"></i> Download my resume</a></li>
   `;
   panel.classList.add('open');
   backdrop.classList.add('open');
