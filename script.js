@@ -408,3 +408,8 @@ function updateLocalTime() {
 
 updateLocalTime();
 setInterval(updateLocalTime, 30000);
+
+// ===== Tools ticker =====
+document.querySelectorAll('.track').forEach(track => {
+  track.innerHTML += track.innerHTML;
+});

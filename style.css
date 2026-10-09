@@ -856,6 +856,270 @@ body.night .shoreline {
   }
 }
 
+/* ===== Toolkit (skills and learning) ===== */
+.span-all {
+  grid-column: 1 / -1;
+}
+
+.section-head .label {
+  margin-top: 64px;
+}
+
+.section-head h2 {
+  margin-top: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.skill-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--tangerine);
+  margin: 0 0 10px;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.skill-list li {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #FAEEDA;
+  color: #633806;
+}
+
+/* Tools ticker */
+.tools {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(74, 27, 12, 0.15);
+}
+
+.ticker {
+  overflow: hidden;
+  padding: 3px 0;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tick 55s linear infinite;
+}
+
+.track.reverse {
+  animation-direction: reverse;
+  animation-duration: 62s;
+}
+
+.ticker:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes tick {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tool {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 6px;
+  background: #F1EFE8;
+  color: #444441;
+  white-space: nowrap;
+}
+
+.tool-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--tangerine);
+  white-space: nowrap;
+  margin: 0 8px 0 18px;
+}
+
+.tool-cat::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tangerine);
+}
+
+/* Education */
+.edu-school {
+  font-size: 0.85rem;
+  color: var(--tangerine);
+  margin: 0 0 12px;
+}
+
+.badges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.badges li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  padding: 5px 0;
+}
+
+.badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.badge-icon.gold { background: #FAEEDA; color: #854F0B; }
+.badge-icon.pink { background: #FBEAF0; color: #993556; }
+.badge-icon.mint { background: #E1F5EE; color: #0F6E56; }
+
+.badge-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #888780;
+}
+
+/* Leveling up */
+.lang {
+  padding: 6px 0 12px;
+}
+
+.lang-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-name {
+  font-weight: 600;
+}
+
+.lang-alt {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--violet);
+}
+
+.lang:hover .lang-name {
+  display: none;
+}
+
+.lang:hover .lang-alt {
+  display: inline;
+}
+
+.lang-level {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--mint-wash);
+  color: var(--pine);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.level {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0 4px;
+}
+
+.level span {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(74, 27, 12, 0.1);
+}
+
+.level span.on {
+  background: var(--pine);
+}
+
+.level span.half {
+  background: linear-gradient(90deg, var(--pine) 50%, rgba(74, 27, 12, 0.1) 50%);
+}
+
+.lang-note {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.lang-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #888780;
+}
+
+/* Night mode versions */
+body.night .skill-list li {
+  background: rgba(250, 199, 117, 0.14);
+  color: var(--gold);
+}
+
+body.night .tool {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+body.night .lang-alt {
+  color: var(--gold);
+}
+
+body.night .level span {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.night .level span.on {
+  background: var(--pine);
+}
+
+body.night .level span.half {
+  background: linear-gradient(90deg, var(--pine) 50%, rgba(255, 255, 255, 0.12) 50%);
+}
+
+/* Less motion: stop the ticker and let people scroll it instead */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+  .ticker {
+    overflow-x: auto;
+  }
+}
+
 /* ===== Chaos mode ===== */
 body {
   overflow-x: hidden;
@@ -1098,8 +1362,13 @@ body.night #stars {
   header {
     flex-wrap: wrap;
     gap: 10px;
+    
   }
 
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .board {
     grid-template-columns: 1fr;
   }
