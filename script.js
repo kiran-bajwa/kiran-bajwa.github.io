@@ -1,5 +1,5 @@
 // Everything that joins the chaos: all cards plus the section headings
-const pieces = document.querySelectorAll('.card, .column, .ticket, .board-tip, .board-top .label, main h2:not(.card h2)');
+const pieces = document.querySelectorAll('.card, .column, .ticket, .board-tip, .board-top .label, .about-intro, .sla-banner, .value-box, main h2:not(.card h2)');
 const button = document.querySelector('#fix-button');
 const status = document.querySelector('#status');
 
@@ -412,4 +412,13 @@ setInterval(updateLocalTime, 30000);
 // ===== Tools ticker =====
 document.querySelectorAll('.track').forEach(track => {
   track.innerHTML += track.innerHTML;
+});
+
+// ===== About: open and close value rows =====
+document.querySelectorAll('.value-head:not(.static)').forEach(head => {
+  head.addEventListener('click', () => {
+    const row = head.closest('.value-row');
+    const isOpen = row.classList.toggle('open');
+    head.setAttribute('aria-expanded', isOpen);
+  });
 });
