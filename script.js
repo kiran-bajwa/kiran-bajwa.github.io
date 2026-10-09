@@ -409,3 +409,18 @@ function updateLocalTime() {
 
 updateLocalTime();
 setInterval(updateLocalTime, 30000);
+
+// ===== Floating nav =====
+const siteHeader = document.getElementById('site-header');
+
+function updateHeader() {
+  const y = window.scrollY;
+  if (y > 80) {
+    siteHeader.classList.add('scrolled');
+  } else if (y < 20) {
+    siteHeader.classList.remove('scrolled');
+  }
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();

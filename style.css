@@ -1674,3 +1674,63 @@ body.night #stars {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ===== Floating nav ===== */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border: 1px solid transparent;
+  transition: top .35s ease, padding .35s ease, background .35s ease,
+              border-radius .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+#site-header.scrolled {
+  top: 12px;
+  width: min(620px, calc(100% - 24px));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 8px 20px;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(60, 52, 137, 0.12);
+}
+
+#site-header.scrolled .status { display: none; }
+
+/* night version */
+body.night #site-header.scrolled {
+  background: rgba(22, 29, 58, 0.72);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* the kb tile: hidden everywhere unless the phone rule below turns it on */
+.logo-mark { display: none; line-height: 0; }
+.logo-mark img { width: 34px; height: 34px; border-radius: 9px; }
+
+/* stop the sticky nav from covering section titles when you click a nav link */
+section[id] { scroll-margin-top: 90px; }
+
+/* phones */
+@media (max-width: 640px) {
+  #site-header.scrolled {
+    top: 8px;
+    width: calc(100% - 16px);
+    padding: 6px 8px 6px 6px;
+  }
+  #site-header.scrolled .logo { display: none; }
+  #site-header.scrolled .logo-mark { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-header { transition: none; }
+}
