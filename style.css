@@ -1075,17 +1075,6 @@ body.night .level span.half {
   transition: transform 0.7s cubic-bezier(.34, 1.56, .64, 1);
 }
 
-.about-intro h2 {
-  margin-top: 0;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-}
-
-.about-intro p {
-  font-size: 1.02rem;
-  line-height: 1.75;
-  max-width: 640px;
-}
-
 /* Banner */
 .sla-banner {
   display: flex;
