@@ -1124,7 +1124,6 @@ body.night .level span.half {
 /* ===== About (status page) ===== */
 .about-status {
   margin-top: 56px;
-  max-width: 760px;
 }
 
 .about-intro,
