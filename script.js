@@ -408,17 +408,3 @@ function updateLocalTime() {
 
 updateLocalTime();
 setInterval(updateLocalTime, 30000);
-
-// ===== Tools ticker =====
-document.querySelectorAll('.track').forEach(track => {
-  track.innerHTML += track.innerHTML;
-});
-
-// ===== About: open and close value rows =====
-document.querySelectorAll('.value-head:not(.static)').forEach(head => {
-  head.addEventListener('click', () => {
-    const row = head.closest('.value-row');
-    const isOpen = row.classList.toggle('open');
-    head.setAttribute('aria-expanded', isOpen);
-  });
-});
