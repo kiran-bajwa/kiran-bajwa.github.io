@@ -55,9 +55,21 @@ header {
   margin: 0;
 }
 
-.logo span {
-  color: var(--pink);
+.logo {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
 }
+
+.logo-wave {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 10px;
+  overflow: visible;
+}
+
 
 nav {
   display: flex;
