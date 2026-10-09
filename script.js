@@ -424,3 +424,12 @@ function updateHeader() {
 
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
+
+// ===== About dropdowns =====
+document.querySelectorAll('.value-head:not(.static)').forEach(head => {
+  head.addEventListener('click', () => {
+    const row = head.closest('.value-row');
+    const isOpen = row.classList.toggle('open');
+    head.setAttribute('aria-expanded', isOpen);
+  });
+});
