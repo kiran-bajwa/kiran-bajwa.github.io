@@ -36,7 +36,7 @@ header, main {
 }
 
 main {
-  padding-bottom: 80px;
+  padding-bottom: 16px;
 }
 
 /* ===== Header ===== */
@@ -694,7 +694,7 @@ main h2 {
 
 .shoreline {
   position: relative;
-  height: 36px;
+  height: 52px;
   overflow: hidden;
   transition: opacity 0.8s;
 }
@@ -702,17 +702,33 @@ main h2 {
 .shoreline svg {
   position: absolute;
   left: 0;
-  bottom: 0;
   width: 200%;
-  height: 36px;
+  height: 30px;
   animation: shore-drift 14s linear infinite;
+}
+
+.shoreline .wave-front {
+  bottom: 4px;
+}
+
+.shoreline .wave-back {
+  bottom: 16px;
+  animation-duration: 22s;
+  animation-direction: reverse;
 }
 
 .shoreline path {
   fill: none;
   stroke: #FFFFFF;
   stroke-width: 2;
+}
+
+.shoreline .wave-front path {
   opacity: 0.85;
+}
+
+.shoreline .wave-back path {
+  opacity: 0.5;
 }
 
 @keyframes shore-drift {
