@@ -660,6 +660,79 @@ main h2 {
   transform: translateX(4px);
 }
 
+/* ===== Soft sky (light mode) ===== */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.8s;
+}
+
+.sun-glow {
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(250, 199, 117, 0.75) 0%,
+    rgba(250, 199, 117, 0.25) 45%,
+    rgba(250, 199, 117, 0) 70%);
+  animation: sun-float 10s ease-in-out infinite;
+}
+
+@keyframes sun-float {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-20px, 14px); }
+}
+
+.shoreline {
+  position: relative;
+  height: 36px;
+  overflow: hidden;
+  transition: opacity 0.8s;
+}
+
+.shoreline svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  height: 36px;
+  animation: shore-drift 14s linear infinite;
+}
+
+.shoreline path {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  opacity: 0.85;
+}
+
+@keyframes shore-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Night mode: the stars take over */
+body.night .sky,
+body.night .shoreline {
+  opacity: 0;
+}
+
+/* Respect people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .sun-glow,
+  .shoreline svg {
+    animation: none;
+  }
+}
 /* ===== Chaos mode ===== */
 body {
   overflow-x: hidden;
