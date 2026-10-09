@@ -1734,3 +1734,38 @@ section[id] { scroll-margin-top: 90px; }
 @media (prefers-reduced-motion: reduce) {
   #site-header { transition: none; }
 }
+
+/* Floating nav: keep everything on one row on phones */
+@media (max-width: 640px) {
+  #site-header.scrolled {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  #site-header.scrolled nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    flex: 1;
+    width: auto;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  #site-header.scrolled nav a {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  #site-header.scrolled .theme-toggle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-left: 2px;
+  }
+}
+
+/* extra-small phones */
+@media (max-width: 370px) {
+  #site-header.scrolled nav { gap: 6px; }
+  #site-header.scrolled nav a { font-size: 11px; }
+}
