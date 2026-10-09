@@ -841,7 +841,6 @@ body.night .shoreline {
   height: 8px;
   border-radius: 50%;
   background: #9FE1CB;
-  animation: live-pulse 2s infinite;
 }
 
 @keyframes live-pulse {
