@@ -1076,41 +1076,37 @@ body.night .level span.half {
 }
 
 /* Banner */
-.sla-banner {
+.value-box-head {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 14px;
-  background: var(--mint-wash);
-  border-radius: 16px;
-  padding: 14px 18px;
-  margin: 20px 0 14px;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 10px 4px;
 }
 
-.sla-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--pine);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.sla-title {
+.value-box-head .value-group {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.05rem;
 }
 
-.sla-meta {
-  margin: 2px 0 0;
+.sla-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  background: var(--mint-wash);
   color: var(--pine);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.sla-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pine);
+  box-shadow: 0 0 0 3px rgba(15, 110, 86, 0.15);
 }
 
 /* The banner says "exceeding SLA" once; the rows don't need to repeat it */
