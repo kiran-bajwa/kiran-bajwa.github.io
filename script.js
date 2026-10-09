@@ -348,7 +348,7 @@ const phrases = [
   'elevating the customer experience',
   'scaling your support org',
   'building programs from scratch',
-  'developing products your customers actually care about',
+  'turning feedback into features',
   'dogs, honestly'
 ];
 const rotatingWord = document.querySelector('#rotating-word');
