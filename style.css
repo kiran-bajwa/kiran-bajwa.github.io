@@ -1258,15 +1258,6 @@ body.night .ticket {
     #1A2148;
 }
 
-/* ----- Tickets washed in their company color ----- */
-body.night .ticket {
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 22%, transparent),
-      color-mix(in srgb, var(--accent) 6%, transparent)),
-    #1A2148;
-}
-
 body.night .column {
   border-color: rgba(255, 255, 255, 0.06);
 }
@@ -1275,10 +1266,6 @@ body.night .ticket {
   border-top-color: rgba(255, 255, 255, 0.08);
   border-right-color: rgba(255, 255, 255, 0.08);
   border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-body.night .ticket-next:not(.claimed) {
-  background: transparent;
 }
 
 body.night .ticket-next:not(.claimed) {
@@ -1368,7 +1355,7 @@ body.night #stars {
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .board {
     grid-template-columns: 1fr;
   }
